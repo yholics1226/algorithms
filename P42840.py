@@ -1,3 +1,5 @@
+# [프로그래머스] 모의고사 (Lv.1)
+
 def solution(answers):
     answer = []
     score = [0] * 4
