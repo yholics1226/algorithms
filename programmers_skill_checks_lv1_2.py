@@ -4,5 +4,4 @@ def solution(participant, completion):
     cH = collections.Counter(completion)
     for x in pH:
         if pH[x] != cH[x]:
-            answer = x
-    return answer
+            return x
