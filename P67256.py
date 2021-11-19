@@ -8,10 +8,10 @@ def solution(numbers, hand):
         y = (numbers[i] - 1) % 3
         if numbers[i] == 0:
             x, y = 3, 1
-        if numbers[i] in [1, 4, 7]:
+        if y == 0:
             answer += 'L'
             lf = [x, y]
-        elif numbers[i] in [3, 6, 9]:
+        elif y == 2:
             answer += 'R'
             rf = [x, y]
         else:
@@ -40,10 +40,10 @@ def sol(numbers, hand):
         if numbers[i] == 0:
             x, y = 3, 1
         print(f'lf: {lf}, rf: {rf}, target: {numbers[i]} = [{x}, {y}]')
-        if numbers[i] in [1, 4, 7]:
+        if y == 0:
             answer += 'L'
             lf = [x, y]
-        elif numbers[i] in [3, 6, 9]:
+        elif y == 2:
             answer += 'R'
             rf = [x, y]
         else:
