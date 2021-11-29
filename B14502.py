@@ -43,7 +43,7 @@ for wall in com:
     ans = max(ans, walls(copy.deepcopy(lab), wall))
 print(ans)
 
-# w/o itertools - can be accepted in PyPy3, but time limit exceeded in Python3
+# w/o itertools
 import sys, copy
 input = sys.stdin.readline
 from collections import deque
@@ -76,16 +76,17 @@ def count(board):
                 if cmin <= cnt:
                     return cmin
     return cnt
-def walls(board, k):
+def walls(s, k):
     global ans, cmin
     if k == 0:
-        cmin = count(copy.deepcopy(board))
+        cmin = count(copy.deepcopy(lab))
     else:
-        for i in range(n):
-            for j in range(m):
-                if board[i][j] == 0:
-                    board[i][j] = 1
-                    walls(board, k-1)
-                    board[i][j] = 0
-walls(lab, 3)
+        for i in range(s, n * m):
+            x = i // m
+            y = i % m
+            if lab[x][y] == 0:
+                lab[x][y] = 1
+                walls(i+1, k-1)
+                lab[x][y] = 0
+walls(0, 3)
 print(empty - 3 - cmin)
