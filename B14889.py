@@ -1,5 +1,7 @@
 # [스타트와 링크] https://www.acmicpc.net/problem/14889
 
+import sys
+input = sys.stdin.readline
 n = int(input())
 nums = [list(map(int, input().split())) for _ in range(n)]
 answer = float('inf')
