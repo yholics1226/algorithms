@@ -12,7 +12,7 @@ def DFS(L, s):
     global answer
     if L == r:
         start = link = 0
-        tmp = list(set([i for i in range(1, n+1)]) - set(res))
+        tmp = list({i for i in range(1, n+1)} - set(res))
         for i in range(r):
             for j in range(i+1,r):
                 start += (nums[res[i]-1][res[j]-1] + nums[res[j]-1][res[i]-1])
