@@ -1,1 +1,1 @@
-# To do: Writing CV
+# To do: Writing CV, Selecting columns for proj.
