@@ -1,1 +1,1 @@
-# To do: Writing CV, Selecting columns for proj.
+# To do: Project (Completed!!), Writing blog
