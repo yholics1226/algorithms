@@ -19,3 +19,21 @@ def solution(food_times, k):
             answer = h[k % n][1]
             break
     return answer
+
+# another solution
+def solution(food_times, k):
+    n = len(food_times)
+    sorted_times = [0] + sorted(food_times)
+    for i in range(1, n+1):
+        t = (sorted_times[i] - sorted_times[i-1]) * n
+        if k >= t:
+            k -= t
+            n -= 1
+        else:
+            k %= n
+            for j in range(len(food_times)):
+                if food_times[j] >= sorted_times[i]:
+                    if k == 0:
+                        return j+1
+                    k -= 1
+    return -1
