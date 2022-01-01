@@ -9,5 +9,4 @@ def maxCoins(nums):
             rt = lt + i - 1
             for j in range(lt, rt+1):
                 dp[lt][rt] = max(dp[lt][rt], dp[lt][j-1] + nums[lt-1] * nums[j] * nums[rt+1] + dp[j+1][rt])
-    print(dp)
     return dp[1][-2]
