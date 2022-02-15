@@ -1,1 +1,0 @@
-# To do: Writing blog
