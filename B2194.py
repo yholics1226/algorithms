@@ -14,8 +14,6 @@ grid[sx][sy] = 0
 Q = deque([(sx, sy)])
 while Q:
     x, y = Q.popleft()
-    if grid[ex][ey] > 0:
-        break
     if x > 1 and grid[x-1][y] == -1:
         for k in range(b):
             if grid[x-1][y+k] == -2:
