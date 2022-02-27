@@ -6,9 +6,8 @@ n = int(input())
 lec = [tuple(map(int, input().split())) for _ in range(n)]
 lec.sort(key=lambda x: x[0])
 H = []
-heapq.heappush(H, lec[0][1])
-for i in range(1, n):
-    if H[0] <= lec[i][0]:
+for s, t in lec:
+    if H and H[0] <= s:
         heapq.heappop(H)
-    heapq.heappush(H, lec[i][1])
+    heapq.heappush(H, t)
 print(len(H))
