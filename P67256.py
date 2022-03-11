@@ -4,10 +4,10 @@ def solution(numbers, hand):
     answer = ''
     lf, rf = [3, 0], [3, 2]
     for i in range(len(numbers)):
-        x = (numbers[i] - 1) // 3
-        y = (numbers[i] - 1) % 3
         if numbers[i] == 0:
             x, y = 3, 1
+        else:
+            x, y = divmod(numbers[i] - 1, 3)
         if y == 0:
             answer += 'L'
             lf = [x, y]
@@ -15,10 +15,11 @@ def solution(numbers, hand):
             answer += 'R'
             rf = [x, y]
         else:
-            if abs(x - lf[0]) + abs(y - lf[1]) < abs(x - rf[0]) + abs(y - rf[1]):
+            diff = abs(x - lf[0]) + abs(y - lf[1]) - abs(x - rf[0]) - abs(y - rf[1])
+            if diff < 0:
                 answer += 'L'
                 lf = [x, y]
-            elif abs(x - lf[0]) + abs(y - lf[1]) > abs(x - rf[0]) + abs(y - rf[1]):
+            elif diff > 0:
                 answer += 'R'
                 rf = [x, y]
             else:
@@ -30,7 +31,7 @@ def solution(numbers, hand):
                     rf = [x, y]
     return answer
   
-# 과정 출력 버전
+# to print the process step by step
 def sol(numbers, hand):
     answer = ''
     lf, rf = [3, 0], [3, 2]
