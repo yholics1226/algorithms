@@ -1,5 +1,27 @@
 # [신규 아이디 추천] https://programmers.co.kr/learn/courses/30/lessons/72410
 
+import re
+def solution(new_id):
+    # Step 1
+    answer = new_id.lower()
+    # Step 2
+    answer = re.sub('[^a-z0-9-_.]', '', answer)
+    # Step 3
+    answer = re.sub('\.+', '.', answer)
+    # Step 4
+    answer = re.sub('^\.|\.$', '', answer)
+    # Step 5
+    if not answer:
+        answer = 'a'
+    # Step 6
+    if len(answer) > 15:
+        answer = re.sub('\.$', '', answer[:15])
+    # Step 7
+    while len(answer) < 3:
+        answer += answer[-1]
+    return answer
+
+# another solution (w/o re)
 def solution(new_id):
     # 1
     answer = new_id.lower()
@@ -34,28 +56,6 @@ def solution(new_id):
         answer = answer[:15]
     if answer[-1] == '.':
         answer = answer[:-1]
-    # 7
-    while len(answer) < 3:
-        answer += answer[-1]
-    return answer
-
-# regular expression
-import re
-def solution(new_id):
-    # 1
-    answer = new_id.lower()
-    # 2
-    answer = re.sub('[^a-z0-9-_.]', '', answer)
-    # 3
-    answer = re.sub('\.+', '.', answer)
-    # 4
-    answer = re.sub('^\.|\.$', '', answer)
-    # 5
-    if not answer:
-        answer = 'a'
-    # 6
-    if len(answer) > 15:
-        answer = re.sub('\.$', '', answer[:15])
     # 7
     while len(answer) < 3:
         answer += answer[-1]
