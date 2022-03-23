@@ -43,24 +43,26 @@ import sys
 input = sys.stdin.readline
 n, m = map(int, input().split())
 grid = [list(input()) for _ in range(n)]
-dist = [[[1000001] * m for _ in range(n)] for _ in range(2)]
+ch = [[[False] * m for _ in range(n)] for _ in range(2)]
+ans = -1
 dx = [0, 1, 0, -1]
 dy = [-1, 0, 1, 0]
 q = deque()
-dist[0][0][0] = 1
+ch[0][0][0] = 1
 q.append((0, 0, 1, 0))
 while q:
     x, y, d, flag = q.popleft()
-    d += 1
+    if x == n-1 and y == m-1:
+        ans = d
+        break
     for k in range(4):
         nx = x + dx[k]
         ny = y + dy[k]
-        if 0 <= nx < n and 0 <= ny < m and dist[flag][nx][ny] > d:
+        if 0 <= nx < n and 0 <= ny < m and not ch[flag][nx][ny]:
             if grid[nx][ny] == '0':
-                dist[flag][nx][ny] = d
-                q.append((nx, ny, d, flag))
+                ch[flag][nx][ny] = 1
+                q.append((nx, ny, d+1, flag))
             elif not flag:
-                dist[1][nx][ny] = d
-                q.append((nx, ny, d, 1))
-ans = min(dist[0][-1][-1], dist[1][-1][-1])
-print(ans if ans < 1000001 else -1)
+                ch[1][nx][ny] = 1
+                q.append((nx, ny, d+1, 1))
+print(ans)
