@@ -4,7 +4,6 @@ import sys
 input = sys.stdin.readline
 n = int(input())
 m = int(input())
-graph = [[] for _ in range(n+1)]
 dist = [[float('inf')] * (n+1) for _ in range(n+1)]
 for i in range(1, n+1):
     dist[i][i] = 0
