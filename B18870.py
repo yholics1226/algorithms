@@ -4,7 +4,7 @@ import sys
 input = sys.stdin.readline
 n = int(input())
 x = [*map(int, input().split())]
-xs = list(set(x))
-xs.sort()
-xd = {k: i for i, k in enumerate(xs)}
-print(*[xd[k] for k in x])
+s = list(set(x))
+s.sort()
+d = {k: i for i, k in enumerate(s)}
+print(*[d[k] for k in x])
