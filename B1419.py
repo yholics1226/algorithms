@@ -23,3 +23,15 @@ else:   # 5x + 10d
         if i % 5 == 0:
             cnt += 1
 print(cnt)
+
+# refactor (accepted in Python3)
+l, r, k = (int(input()) for _ in range(3))
+if k == 2:
+    ans = r - max(l, 3) + 1
+elif k == 4:
+    l = max(l, 10)
+    ans = r//2 - (l-1)//2 - (l <= 12 <= r)
+else:
+    l = max(l, 6 if k == 3 else 15)
+    ans = r//k - (l-1)//k
+print(max(0, ans))
