@@ -16,3 +16,19 @@ def countSubstrings(s):
                 dp[j][j+i] = True
                 cnt += 1
     return cnt
+
+# faster solution
+def countSubstrings(s):
+    ans = n = len(s)
+    for i in range(n):
+        lt, rt = i-1, i+1
+        while lt >= 0 and rt < n and s[lt] == s[rt]:
+            ans += 1
+            lt -= 1
+            rt += 1
+        lt, rt = i, i+1
+        while lt >= 0 and rt < n and s[lt] == s[rt]:
+            ans += 1
+            lt -= 1
+            rt += 1
+    return ans
