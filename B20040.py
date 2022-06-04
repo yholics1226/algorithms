@@ -6,22 +6,22 @@ n, m = map(int, input().split())
 def find(v):
     if v == unf[v]:
         return v
-    else:
-        unf[v] = find(unf[v])
-        return unf[v]
+    unf[v] = find(unf[v])
+    return unf[v]
 def union(a, b):
-    fa = find(a)
-    fb = find(b)
-    if fa < fb:
+    fa, fb = find(a), find(b)
+    if fa == fb:
+        return True
+    elif fa < fb:
         unf[fb] = fa
     else:
         unf[fa] = fb
+    return False
 unf = [i for i in range(n)]
 for i in range(m):
     a, b = map(int, input().split())
-    if find(a) == find(b):
+    if union(a, b):
         print(i+1)
         break
-    union(a, b)
 else:
     print(0)
