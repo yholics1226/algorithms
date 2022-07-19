@@ -29,3 +29,24 @@ for _ in range(t):
     tree = buildTree(preorder, inorder)
     postorder(tree)
     print()
+
+# another solution (much faster)
+import sys
+input = sys.stdin.readline
+def post(si, ei, sp, ep):
+    if si <= ei:
+        x = idx[preorder[sp]]
+        post(si, x-1, sp+1, sp+x-si)
+        post(x+1, ei, x-si+sp+1, ep)
+        postorder.append(preorder[sp])
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    preorder = [*map(int, input().split())]
+    inorder = [*map(int, input().split())]
+    idx = [0] * (n+1)
+    for i in range(n):
+        idx[inorder[i]] = i
+    postorder = []
+    post(0, n-1, 0, n-1)
+    print(*postorder)
