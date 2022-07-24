@@ -9,3 +9,14 @@ def countSmaller(nums):
         ans.append(i)
         del tmp[i]
     return ans
+
+# using SortedList (faster)
+from sortedcontainers import SortedList
+def countSmaller(nums):
+    ans = []
+    s = SortedList()
+    for num in nums[::-1]:
+        i = SortedList.bisect_left(s, num)
+        ans.append(i)
+        s.add(num)
+    return ans[::-1]
